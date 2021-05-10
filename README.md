@@ -4,10 +4,15 @@
 
 # ROUTES
 
-### router.get() --> Get all data
+### https://morning-falls-13577.herokuapp.com/app/data/ --> Get all data (GET REQUEST)
 
-### router.post() --> Create new data
+### https://morning-falls-13577.herokuapp.com/app/data/:id --> Get a single data (GET REQUEST)
 
-### router.put() --> Update an existing data
+### https://morning-falls-13577.herokuapp.com/app/data/ --> Create new data (POST REQUEST)
 
-### router.delete() --> Delete a data
+### https://morning-falls-13577.herokuapp.com/app/data/:id --> Update an existing data (PUT REQUEST)
+
+### https://morning-falls-13577.herokuapp.com/app/data/:id --> Delete a data (DELETE REQUEST)
+
+
+### Heroku link: https://morning-falls-13577.herokuapp.com
