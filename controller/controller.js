@@ -27,17 +27,16 @@ const getDataById = async (req, res) => {
 
 const addNewData = async (req, res) => {
   const { name, email, country } = req.body;
-  if (!req.body.name || !req.body.email || !req.body.country) {
+  if (!name || !email || !country) {
     return res.status(400).json({
       message: "Enter body parameters",
     });
   }
-  let user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    country: req.body.country,
+  let user = await User.create({
+    name: name,
+    email: email,
+    country: country,
   });
-  user = await user.save();
   res.json({
     status: "success",
     message: "New data created successfully",
@@ -49,7 +48,7 @@ const updateData = async (req, res) => {
   const user = await User.findByIdAndUpdate(
     req.params.id,
     {
-      email: req.body.email,
+      ...req.body
     },
     {
       new: true,
@@ -61,8 +60,8 @@ const updateData = async (req, res) => {
       message: "User not found",
     });
   }
-  res.json({
-    status: "201",
+  res.status(201).json({
+    status: "success",
     message: "User data updated successfully",
     data: user,
   });
@@ -75,10 +74,10 @@ const deleteData = async (req, res) => {
       .status(404)
       .json({ status: "Failed", message: "User with Id not found" });
   }
-  res.json({
+  res.status(204).json({
     status: "success",
     message: "Data deleted successfully",
-    data: user,
+    data: null,
   });
 };
 
